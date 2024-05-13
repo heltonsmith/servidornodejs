@@ -19,10 +19,6 @@ app.post('/enviar-datos', (req, res) => {
     res.send('Datos recibidos correctamente');
 });
 
-const socket = io('https://tu-servidor-socket-io.com');
-socket.on('connect', () => {
-    console.log('Conexión establecida con el servidor Socket.IO');
-});
 
 // Configura WebSocket para recibir datos del Arduino
 io.on('connection', (socket) => {
