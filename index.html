@@ -17,6 +17,7 @@
         socket.on('datosActualizados', (data) => {
             // Convierte el objeto JavaScript a una cadena de texto
             const datosString = JSON.stringify(data);
+            console.log(data)
             // Utiliza innerHTML para insertar HTML dentro del elemento
             document.getElementById('datos').innerHTML = `<p>Datos recibidos: ${datosString}</p>`;
         });
