@@ -11,7 +11,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
     <script>
-        const socket = io('http://localhost:3000'); // Utiliza localhost y el puerto de tu servidor Node.js
+        const socket = io('https://servidornodejs-s4an.onrender.com/'); // Utiliza localhost y el puerto de tu servidor Node.js
 
         socket.on('connect', () => {
             console.log('Conexión establecida con el servidor Socket.IO');
