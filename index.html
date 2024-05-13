@@ -21,7 +21,7 @@
         socket.on('datosActualizados', (data) => {
             console.log('Datos recibidos desde el servidor:', data);
             // Actualiza la visualización de datos en el HTML
-            document.getElementById('datos').innerText += `Datos recibidos: ${JSON.stringify(data)}<br>`;
+            document.getElementById('datos').innerText += `Datos recibidos: ${JSON.stringify(data)}` + "<br>";
         });
 
         // Función para enviar datos al servidor
