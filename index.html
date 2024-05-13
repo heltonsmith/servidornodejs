@@ -11,16 +11,19 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
     <script>
-        const socket = io();
-    
+        const socket = io('http://localhost:3000'); // Utiliza localhost y el puerto de tu servidor Node.js
+
+        socket.on('connect', () => {
+            console.log('Conexión establecida con el servidor Socket.IO');
+        });
+
         // Escucha la actualización de datos desde el servidor
         socket.on('datosActualizados', (data) => {
             // Convierte el objeto JavaScript a una cadena de texto
             const datosString = JSON.stringify(data);
-            console.log(data)
             // Utiliza innerHTML para insertar HTML dentro del elemento
             document.getElementById('datos').innerHTML = `<p>Datos recibidos: ${datosString}</p>`;
         });
-    </script>    
+    </script>
 </body>
 </html>
