@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualización de Datos Arduino</title>
+</head>
+<body>
+    <h1>Datos del Arduino</h1>
+    <div id="datos"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <script>
+        const socket = io();
+
+        // Escucha la actualización de datos desde el servidor
+        socket.on('datosActualizados', (data) => {
+            document.getElementById('datos').innerText = `Datos recibidos: ${data}`;
+        });
+    </script>
+</body>
+</html>
