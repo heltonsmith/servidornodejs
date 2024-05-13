@@ -11,7 +11,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
     <script>
-        const socket = io('https://servidornodejs-s4an.onrender.com/'); // Utiliza localhost y el puerto de tu servidor Node.js
+        const socket = io('https://servidornodejs-s4an.onrender.com/'); // Cambia la URL del servidor si es necesario
 
         socket.on('connect', () => {
             console.log('Conexión establecida con el servidor Socket.IO');
@@ -19,11 +19,16 @@
 
         // Escucha la actualización de datos desde el servidor
         socket.on('datosActualizados', (data) => {
-            // Convierte el objeto JavaScript a una cadena de texto
-            const datosString = JSON.stringify(data);
-            // Utiliza innerHTML para insertar HTML dentro del elemento
-            document.getElementById('datos').innerHTML = `<p>Datos recibidos: ${datosString}</p>`;
+            console.log('Datos recibidos desde el servidor:', data);
+            // Actualiza la visualización de datos en el HTML
+            document.getElementById('datos').innerText = `Datos recibidos: ${JSON.stringify(data)}`;
         });
+
+        // Función para enviar datos al servidor
+        function enviarDatos() {
+            const datos = { dato: 'valor' }; // Aquí debes colocar los datos que deseas enviar
+            socket.emit('datosActualizados', datos);
+        }
     </script>
 </body>
 </html>
