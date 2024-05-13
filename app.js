@@ -11,16 +11,18 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
 });
 
+// Ruta para manejar la solicitud POST de datos
+app.post('/enviar-datos', (req, res) => {
+    const datosRecibidos = req.body;
+    console.log('Datos recibidos:', datosRecibidos);
+    // Puedes emitir los datos a través de WebSocket aquí si es necesario
+    io.emit('datosActualizados', datosRecibidos); // Envía los datos a todos los clientes conectados
+    res.send('Datos recibidos correctamente');
+});
+
 // Configura WebSocket para recibir datos del cliente
 io.on('connection', (socket) => {
     console.log('Un cliente se ha conectado');
-
-    // Maneja los datos recibidos desde el cliente
-    socket.on('datosActualizados', (data) => {
-        console.log('Datos recibidos desde el cliente:', data);
-        // Envía los datos a todos los clientes conectados
-        io.emit('datosActualizados', data);
-    });
 });
 
 // Escucha en el puerto 3000
